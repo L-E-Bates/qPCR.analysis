@@ -18,4 +18,5 @@ Analyse qPCR file
 \examples{
 x <- "~/qPCR_results.csv"
 analyse_qPCR(x)
+
 }
