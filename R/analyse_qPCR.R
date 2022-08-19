@@ -35,14 +35,14 @@ analyse_qPCR <- function(qPCR_file){
   data_small <- data[,c("Sample Name","Target Name","CT")]
   colnames(data_small) <- c("Sample_Name","Target_Name","CT")
   data_small$CT <- as.numeric(data_small$CT)
-  stat.summary <- na.omit(data_small) %>% dplyr::group_by(Sample_Name, Target_Name) %>% dplyr::summarise(mean=mean(CT), sd=sd(CT), lower_bound=mean(CT)-2*sd(CT), upper_bound=mean(CT)+2*sd(CT), outliers=CT<mean(CT)-2*sd(CT)|CT>mean(CT)+2*sd(CT))
+  stat.summary <- stats::na.omit(data_small) %>% dplyr::group_by(Sample_Name, Target_Name) %>% dplyr::summarise(mean=mean(CT), sd=stats::sd(CT), lower_bound=mean(CT)-2*stats::sd(CT), upper_bound=mean(CT)+2*stats::sd(CT), outliers=CT<mean(CT)-2*stats::sd(CT)|CT>mean(CT)+2*stats::sd(CT))
   data_small$CT[is.na(data_small$CT)] <- 40
   data_small$dCT <- data_small$CT-stat.summary$mean[match(paste(data_small$Sample_Name, ctrl_gene), paste(stat.summary$Sample_Name, stat.summary$Target_Name))]
   data_small$Exp_NegdCT <- 2^(-data_small$dCT)
-  dCT.summary <- na.omit(data_small) %>% dplyr::group_by(Sample_Name, Target_Name) %>% dplyr::summarise(mean=mean(dCT))
+  dCT.summary <- stats::na.omit(data_small) %>% dplyr::group_by(Sample_Name, Target_Name) %>% dplyr::summarise(mean=mean(dCT))
   data_small$ddCT <- data_small$dCT-dCT.summary$mean[match(paste(ctrl_line,data_small$Target_Name), paste(dCT.summary$Sample_Name, dCT.summary$Target_Name))]
   data_small$Exp_NegddCT <- 2^(-data_small$ddCT)
-  data.summary <- na.omit(data_small) %>% dplyr::group_by(Sample_Name, Target_Name) %>% dplyr::summarise(mean_d=mean(Exp_NegdCT), sd_d=sd(Exp_NegdCT), mean_dd=mean(Exp_NegddCT), sd_dd=sd(Exp_NegddCT))
+  data.summary <- stats::na.omit(data_small) %>% dplyr::group_by(Sample_Name, Target_Name) %>% dplyr::summarise(mean_d=mean(Exp_NegdCT), sd_d=stats::sd(Exp_NegdCT), mean_dd=mean(Exp_NegddCT), sd_dd=stats::sd(Exp_NegddCT))
   data.summary
 }
 
