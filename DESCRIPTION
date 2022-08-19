@@ -15,3 +15,5 @@ Imports:
     stats,
     tidyr,
     utils
+URL: https://github.com/L-E-Bates/qPCR.analysis
+BugReports: https://github.com/L-E-Bates/qPCR.analysis/issues
