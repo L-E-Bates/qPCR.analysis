@@ -1,3 +1,15 @@
+
+
+#' Analyse qPCR file
+#'
+#' @param qPCR_file The path to a csv file of the Results page of a qPCR run.
+#'
+#' @return A tibble containing the mean and SD for the delta and delta delta values for each gene in each sample.
+#' @export
+#'
+#' @examples
+#' x <- "~/qPCR_results.csv"
+#' analyse_qPCR(x)
 analyse_qPCR <- function(qPCR_file){
   metadata <- read.csv(qPCR_file,header=FALSE, sep=",", encoding="UTF-8")
 
