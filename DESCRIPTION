@@ -14,6 +14,7 @@ Imports:
     magrittr,
     stats,
     tidyr,
-    utils
+    utils,
+    outliers
 URL: https://github.com/L-E-Bates/qPCR.analysis
 BugReports: https://github.com/L-E-Bates/qPCR.analysis/issues

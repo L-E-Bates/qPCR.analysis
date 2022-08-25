@@ -1,0 +1,58 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# qPCR.analysis
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of qPCR.analysis is to take in a csv of the Results page from an Applied Biosystems 96- or 384-W qPCR analysis and export mean +/- SD for each sample.
+
+## Installation
+
+You can install the development version of qPCR.analysis from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("L-E-Bates/qPCR.analysis")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(qPCR.analysis)
+## basic example code
+
+x <- "C:/Users/Lawrence/Downloads/STAN_qPCR/STAN_qPCR/150422_STAN_NE_QuantStudio 12K Flex_export.csv"
+analyse_qPCR(x)
+```
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
