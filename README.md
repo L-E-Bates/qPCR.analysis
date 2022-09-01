@@ -28,42 +28,32 @@ This is a basic example which shows you how to solve a common problem:
 library(qPCR.analysis)
 ## basic example code
 
-x <- "C:/Users/Lawrence/Downloads/STAN_qPCR/STAN_qPCR/150422_STAN_NE_QuantStudio 12K Flex_export.csv"
+x <- system.file("extdata", "SYBR 384W example.csv", package = "qPCR.analysis")
 analyse_qPCR(x)
 #> [1] "Detected SybrGreen run. Analysing."
 #> [1] "Assuming analysis method is Delta-Delta CT. Performing analysis."
-#> [1] "Control gene is UBC"
-#> [1] "Control line is 161_NAIVE"
-#> # A tibble: 34 x 9
-#> # Groups:   Sample_Name [6]
-#>    Sample_Name Target_Name  mean_d    sd_d   sem_d mean_dd   sd_dd  sem_dd  nrep
-#>    <chr>       <chr>         <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <int>
-#>  1 161_NAIVE   ACTB        7.73e-1 1.77e-2 4.41e-3 1.00e+0 2.28e-2 5.71e-3     4
-#>  2 161_NAIVE   FOXG1       8.75e-5 2.01e-5 5.04e-6 1.02e+0 2.35e-1 5.88e-2     4
-#>  3 161_NAIVE   OTX2        4.74e-3 1.64e-3 4.10e-4 1.05e+0 3.64e-1 9.11e-2     4
-#>  4 161_NAIVE   PAX6        1.47e-6 3.99e-7 2.00e-7 1.02e+0 2.76e-1 1.38e-1     2
-#>  5 161_NAIVE   SOX1        1.60e-4 2.23e-5 5.57e-6 1.01e+0 1.40e-1 3.50e-2     4
-#>  6 161_NAIVE   UBC         1.32e+0 1.09e+0 2.73e-1 1.32e+0 1.09e+0 2.73e-1     4
-#>  7 161_NE      ACTB        3.36e-1 1.25e-2 3.12e-3 4.35e-1 1.61e-2 4.03e-3     4
-#>  8 161_NE      FOXG1       1.72e-3 1.26e-4 3.16e-5 2.01e+1 1.48e+0 3.69e-1     4
-#>  9 161_NE      OTX2        1.11e-2 8.69e-4 2.17e-4 2.46e+0 1.93e-1 4.82e-2     4
-#> 10 161_NE      PAX6        4.86e-3 3.37e-4 8.42e-5 3.37e+3 2.33e+2 5.83e+1     4
-#> # ... with 24 more rows
+#> [1] "Control gene is Housekeeper"
+#> [1] "Control line is D0 Untreated Rep 1"
+#> [1] "1d Condition A Rep 1 Target3 is an outlier; p= 0.0271002710027057 . Excluding."
+#> [1] "1d Condition A Rep 2 Target4 is an outlier; p= 0.0285248573757118 . Excluding."
+#> [1] "2d Condition B Rep 2 Target3 is an outlier; p= 0.0336700336700348 . Excluding."
+#> [1] "D0 Untreated Rep 1 Target2 is an outlier; p= 0.0372852122053811 . Excluding."
+#> # A tibble: 110 x 9
+#> # Groups:   Sample_Name [22]
+#>    Sample_Name     Targe~1  mean_d    sd_d   sem_d mean_dd   sd_dd  sem_dd  nrep
+#>    <chr>           <chr>     <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <int>
+#>  1 1d Condition A~ Housek~ 1.00e+0 3.29e-2 1.10e-2   1.00  3.29e-2 0.0110      3
+#>  2 1d Condition A~ Target1 6.73e-4 7.81e-5 2.60e-5   1.04  1.21e-1 0.0402      3
+#>  3 1d Condition A~ Target2 6.20e-5 6.24e-5 2.08e-5  17.1   1.72e+1 5.75        3
+#>  4 1d Condition A~ Target3 3.14e-4 2.77e-6 1.39e-6   1.65  1.46e-2 0.00730     2
+#>  5 1d Condition A~ Target4 5.62e-4 3.50e-4 1.17e-4   0.557 3.47e-1 0.116       3
+#>  6 1d Condition A~ Housek~ 1.14e+0 6.73e-1 2.24e-1   1.14  6.73e-1 0.224       3
+#>  7 1d Condition A~ Target1 7.07e-4 9.56e-5 3.19e-5   1.09  1.48e-1 0.0493      3
+#>  8 1d Condition A~ Target2 8.95e-5 1.18e-5 3.93e-6  24.7   3.26e+0 1.09        3
+#>  9 1d Condition A~ Target3 3.49e-4 3.87e-5 1.29e-5   1.84  2.04e-1 0.0679      3
+#> 10 1d Condition A~ Target4 5.88e-4 4.04e-6 2.02e-6   0.583 4.00e-3 0.00200     2
+#> # ... with 100 more rows, and abbreviated variable name 1: Target_Name
 #> # i Use `print(n = ...)` to see more rows
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
@@ -71,10 +61,3 @@ up-to-date. `devtools::build_readme()` is handy for this. You could also
 use GitHub Actions to re-render `README.Rmd` every time you push. An
 example workflow can be found here:
 <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.

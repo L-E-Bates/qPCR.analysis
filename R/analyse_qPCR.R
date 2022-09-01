@@ -7,7 +7,7 @@
 #' @param ctrl_line Name of the control line to normalize to if not included or different to that stated in the file.
 #' @param out_data Logical. Set to true to output the full analysed dataset rather than the summary statistics.
 #'
-#' @return A tibble containing the mean and SD for the delta and delta delta values for each gene in each sample.
+#' @return A tibble containing the mean, SD, and SEM for the delta and delta delta values for each gene in each sample.
 #' @export
 #'
 #' @examples
@@ -73,8 +73,6 @@ analyse_qPCR <- function(qPCR_file, ctrl_gene=FALSE, ctrl_line=FALSE, out_data=F
   data_small$CT[data_small$CT=="Undetermined"] <- NA
   data_small$CT <- as.numeric(data_small$CT)
   data_small <- stats::na.omit(data_small)
-#  data_small$CT[is.na(data_small$CT)] <- lapply(data_small$CT[is.na(data_small$CT)],function(x) 40 + rnorm(1,sd=0.00001))
-#  data_small$CT <- unlist(data_small$CT)
 
   data_table <- data.frame(Sample_Name=character(), Target_Name=character(),CT=numeric(),CTr=numeric(),p.value=numeric())
 
